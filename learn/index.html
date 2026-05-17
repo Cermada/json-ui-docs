@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSON UI Docs — Bedrock Resource Pack Guide</title>
+  <meta name="description" content="A beginner-friendly, step-by-step guide to mastering JSON UI for Minecraft Bedrock Edition resource packs." />
+  <meta property="og:title" content="JSON UI Docs" />
+  <meta property="og:description" content="Learn JSON UI for Minecraft Bedrock Edition from the ground up." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Docsify Vue theme (clean & professional) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/themes/vue.css" />
+
+  <!-- Prism code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== GLOBAL ===== */
+    :root {
+      --theme-color: #5ba84d;
+      --sidebar-width: 270px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* ===== COVER PAGE ===== */
+    section.cover {
+      background: linear-gradient(160deg, #0d1f0d 0%, #1a3a1a 40%, #0d200d 100%) !important;
+    }
+
+    section.cover .cover-main {
+      background: transparent !important;
+    }
+
+    section.cover h1 {
+      color: #7dd96e !important;
+      font-size: 2.8rem !important;
+      font-weight: 700 !important;
+      text-shadow: 0 0 30px rgba(93, 200, 75, 0.3) !important;
+    }
+
+    section.cover p {
+      color: #c8e6c0 !important;
+      font-size: 1.15rem !important;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    section.cover ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    section.cover ul li {
+      color: #a8d8a0 !important;
+      padding: 4px 0;
+      font-size: 0.95rem;
+    }
+
+    section.cover ul li::before {
+      content: "✦ ";
+      color: #5ba84d;
+    }
+
+    section.cover blockquote {
+      border: none !important;
+      background: rgba(93, 200, 75, 0.08) !important;
+      border-left: 3px solid #5ba84d !important;
+      border-radius: 6px !important;
+      padding: 12px 20px !important;
+      margin: 1.5rem 0 !important;
+    }
+
+    section.cover blockquote p {
+      color: #c8e6c0 !important;
+      font-size: 1.05rem !important;
+    }
+
+    section.cover .cover-main > p:last-child a {
+      border-radius: 6px !important;
+      font-weight: 600 !important;
+      padding: 10px 28px !important;
+      font-size: 0.95rem !important;
+    }
+
+    section.cover .cover-main > p:last-child a:first-child {
+      background: #5ba84d !important;
+      border: 2px solid #5ba84d !important;
+      color: white !important;
+    }
+
+    section.cover .cover-main > p:last-child a:first-child:hover {
+      background: #4d9040 !important;
+    }
+
+    section.cover .cover-main > p:last-child a:last-child {
+      border: 2px solid #5ba84d !important;
+      color: #7dd96e !important;
+      background: rgba(93, 168, 77, 0.1) !important;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      background: #141a14 !important;
+      border-right: 1px solid #2a3a2a !important;
+    }
+
+    .sidebar-nav a {
+      color: #b0ccb0 !important;
+      font-size: 14px !important;
+      line-height: 1.8 !important;
+      transition: color 0.15s !important;
+    }
+
+    .sidebar-nav a:hover {
+      color: #7dd96e !important;
+      text-decoration: none !important;
+    }
+
+    .sidebar-nav a.active {
+      color: #7dd96e !important;
+      border-right: 3px solid #5ba84d !important;
+      font-weight: 600 !important;
+    }
+
+    /* Section headers in sidebar (bold items) */
+    .sidebar-nav > ul > li > p,
+    .sidebar-nav > ul > li > strong {
+      color: #5ba84d !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em !important;
+      margin: 14px 0 4px !important;
+      padding-left: 0 !important;
+    }
+
+    .app-name-link {
+      color: #7dd96e !important;
+      font-weight: 700 !important;
+      font-size: 17px !important;
+    }
+
+    .app-name-link:hover {
+      color: #9de88e !important;
+      text-decoration: none !important;
+    }
+
+    /* Sidebar toggle button */
+    .sidebar-toggle {
+      background: #141a14 !important;
+    }
+
+    .sidebar-toggle span {
+      background: #5ba84d !important;
+    }
+
+    /* ===== CONTENT ===== */
+    .content {
+      max-width: 860px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #1a2e1a !important;
+    }
+
+    h2 {
+      border-bottom: 2px solid #e8f5e3 !important;
+      padding-bottom: 8px !important;
+    }
+
+    a {
+      color: #3a8f30 !important;
+    }
+
+    a:hover {
+      color: #5ba84d !important;
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    pre[class*="language-"] {
+      border-radius: 8px !important;
+      margin: 1.4em 0 !important;
+      border: 1px solid #2a2a2a !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 13.5px !important;
+    }
+
+    code.language-json, code.language-bash {
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    /* Inline code */
+    code:not([class*="language-"]) {
+      background: #e8f5e3 !important;
+      color: #2a6622 !important;
+      border: 1px solid #c8e6c0 !important;
+      padding: 2px 6px !important;
+      border-radius: 4px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.875em !important;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+      border-collapse: collapse !important;
+      width: 100% !important;
+      margin: 1.2em 0 !important;
+      font-size: 14px !important;
+    }
+
+    table th {
+      background: #1a3a1a !important;
+      color: #c8e6c0 !important;
+      padding: 9px 14px !important;
+      text-align: left !important;
+      font-weight: 600 !important;
+    }
+
+    table td {
+      padding: 8px 14px !important;
+      border-bottom: 1px solid #eef6ec !important;
+      vertical-align: top !important;
+    }
+
+    table tr:hover td {
+      background: #f4fbf2 !important;
+    }
+
+    /* ===== BLOCKQUOTES (Tips/Notes) ===== */
+    blockquote {
+      border-left: 4px solid #5ba84d !important;
+      background: #f0faf0 !important;
+      color: #1a3a1a !important;
+      padding: 12px 18px !important;
+      border-radius: 0 6px 6px 0 !important;
+      margin: 1.3em 0 !important;
+    }
+
+    blockquote p {
+      margin: 0 !important;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      vertical-align: middle;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+    .badge.beginner      { background: #4caf50; color: white; }
+    .badge.intermediate  { background: #ff9800; color: white; }
+    .badge.advanced      { background: #e53935; color: white; }
+
+    /* ===== NAVBAR ===== */
+    .nav-wrapper {
+      background: #141a14 !important;
+      border-bottom: 1px solid #2a3a2a !important;
+    }
+
+    .nav-wrapper a {
+      color: #b0ccb0 !important;
+    }
+
+    .nav-wrapper a:hover {
+      color: #7dd96e !important;
+    }
+
+    /* ===== SEARCH ===== */
+    .search input {
+      background: #1e281e !important;
+      border: 1px solid #2a3a2a !important;
+      color: #c8e6c0 !important;
+      border-radius: 6px !important;
+    }
+
+    .search input:focus {
+      border-color: #5ba84d !important;
+    }
+
+    /* ===== COPY CODE BUTTON ===== */
+    .docsify-copy-code-button {
+      background: #2a3a2a !important;
+      color: #b0ccb0 !important;
+      border-radius: 4px !important;
+    }
+
+    /* ===== PAGINATION ===== */
+    .pagination-item--next .pagination-item-label,
+    .pagination-item--previous .pagination-item-label {
+      color: #5ba84d !important;
+    }
+
+    /* ===== HR ===== */
+    hr {
+      border-color: #e0f0dc !important;
+      margin: 2em 0 !important;
+    }
+
+    /* ===== COVER BACKGROUND FIX ===== */
+    .cover-main--fixed {
+      background: transparent !important;
+    }
+  </style>
+</head>
+<body>
+ <!-- md content-->
+  <div id="app"></div>
+  <script>
+  
+    window.$docsify = {
+      plugins: [
+        function pageFooter(hook, vm) {
+          var footer = [
+            '<hr/>',
+            '<strong>JSON UI Docs</strong>',
+            '<br>',
+            '<span><a href="https://otzr.netlify.app">Octazen Resources</a> &copy; 2026 </span>',
+            '<span>This Wiki is created with AI using Replit.</span>',
+            '</footer>',
+          ].join('');
+
+          hook.afterEach(function (html) {
+            return html + footer;
+          });
+        },
+      ],
+      name: '~JSON UI Docs~',
+      loadSidebar: true,
+      subMaxLevel: 5,
+      auto2top: true,
+      loadNavbar: true,
+      themeable: {
+          readyTransition : true, // default
+          responsiveTables: true  // default
+      },
+      search: {
+    maxAge: 86400000,
+    paths: 'auto',
+    placeholder: 'Search docs...',
+    noData: 'No results found.',
+    depth: 4,
+    hideOtherSidebarContent: false,
+  },
+  copyCode: {
+    buttonText: 'Copy',
+    errorText: 'Error',
+    successText: 'Copied!'
+  },
+  pagination: {
+    previousText: '← Previous',
+    nextText: 'Next →',
+    crossChapter: true,
+    crossChapterText: true,
+  }
+    }
+    
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+<!-- docsify-themeable -->
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+
+<!-- Prism syntax highlighting -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+</body>
+
+</html>
