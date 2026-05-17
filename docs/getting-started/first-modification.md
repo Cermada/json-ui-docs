@@ -22,30 +22,30 @@ In the vanilla UI files, the HUD lives in `ui/hud_screen.json`. Open the vanilla
 You'll find something like this (simplified):
 
 ```json
-"chat_text_display": {
+"chat_label": {
     "type": "label",
-    "color": [1, 1, 1, 1]
+    "color": $chat_text_color
 }
 ```
 
-This tells us: there's a **label** element called `chat_text_display`, and its text color is white (`[1, 1, 1, 1]` = RGBA, where 1.0 = 255).
+This tells us: there's a **label** element called `chat_label`, and its text color denoted to global variables using variable `$chat_text_color` as the placeholder.
 
 ## Step 2: Understand the JSON
 
 Let's break down what we're looking at:
 
 ```json
-"chat_text_display": {    // The element's name (key)
+"chat_label": {    // The element's name (key)
     "type": "label",      // What kind of element it is
-    "color": [1, 1, 1, 1] // Its color: [Red, Green, Blue, Alpha] all 0.0–1.0
+    "color": $chat_text_color // a placeholder denoted to _global_variables.json, you can replace them using hardcoded value of RGB 0-1 e.g, [ 1, 1, 1]
 }
 ```
 
-Colors in JSON UI use values between `0.0` (none) and `1.0` (full). So:
-- `[1, 0, 0, 1]` = red
-- `[0, 1, 0, 1]` = green
-- `[1, 1, 0, 1]` = yellow
-- `[0.5, 0.5, 0.5, 1]` = gray
+Colors in JSON UI use RGB 0-1 / RGBA 0-1, whereas its values between `0.0` (none) and `1.0` (full). So:
+- `[1, 0, 0]` = red
+- `[0, 1, 0]` = green
+- `[1, 1, 0]` = yellow
+- `[0.5, 0.5, 0.5]` = gray
 
 ## Step 3: Create Your Modification File
 
@@ -59,7 +59,7 @@ Add this content:
 {
     "namespace": "hud",
 
-    "chat_text_display": {
+    "chat_label": {
         "color": [1, 1, 0, 1]
     }
 }
@@ -98,7 +98,7 @@ If it works — congratulations! You've made your first JSON UI modification.
 
 When Minecraft loaded, it:
 1. Read the vanilla `hud_screen.json` (defines thousands of elements)
-2. Read your `hud_screen.json` (defines only `chat_text_display` with a new color)
+2. Read your `hud_screen.json` (defines only `chat_label` with a new color)
 3. **Merged** them together — your property overwrote the vanilla one
 4. Rendered the UI using the merged result
 
