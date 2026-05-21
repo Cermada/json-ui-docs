@@ -11,6 +11,7 @@
 * [File Structure](core-concepts/file-structure.md)
 * [Element Types](core-concepts/element-types.md)
 * [The Modifications System](core-concepts/modifications.md)
+* [Making Your Element Appear](core-concepts/making-elements-visible.md)
 * [Bindings — Live Data](core-concepts/bindings.md)
 * [Variables & Templates](core-concepts/variables.md)
 
