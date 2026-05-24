@@ -40,21 +40,18 @@ This is where Minecraft looks for your packs. The location depends on your platf
 ```
 Press `Win+R`, paste the path above, and hit Enter.
 
-**Windows (from Minecraft Launcher / Education):**
-```
-%APPDATA%\Minecraft\resource_packs
-```
-
 **Android:**
 ```
 /Android/data/com.mojang.minecraftpe/files/games/com.mojang/resource_packs
 ```
 
-**iOS/iPadOS:** Use the Files app → On My iPhone → Minecraft → games → com.mojang → resource_packs
-
+**iOS/iPadOS:**
+```
+Use the Files app → On My iPhone → Minecraft → games → com.mojang → resource_packs
+```
 > **Tip for Windows users:** Create a shortcut to your `resource_packs` folder on your desktop. You'll open it constantly.
 
-## Getting the Vanilla UI Files (Optional but Highly Recommended)
+## Getting Resource Pack samples (Optional but Highly Recommended)
 
 Minecraft's built-in UI files are your best reference. You can download them from Mojang's official samples repository:
 
