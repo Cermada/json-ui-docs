@@ -189,4 +189,4 @@ When an element extends another element using `@`, it inherits the parent's type
 
 ---
 
-Next: [The Modifications System →](core-concepts/modifications.md)
+Next: [Making Your Element Appear →](core-concepts/making-elements-visible.md)
