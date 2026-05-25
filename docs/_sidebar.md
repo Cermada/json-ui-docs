@@ -10,9 +10,9 @@
 * [How JSON UI Works](core-concepts/how-json-ui-works.md)
 * [File Structure](core-concepts/file-structure.md)
 * [Element Types](core-concepts/element-types.md)
-* [The Modifications System](core-concepts/modifications.md)
 * [Making Your Element Appear](core-concepts/making-elements-visible.md)
-* [Bindings — Live Data](core-concepts/bindings.md)
+* [The Modifications System](core-concepts/modifications.md)
+* [Bindings — A Live Data](core-concepts/bindings.md)
 * [Variables & Templates](core-concepts/variables.md)
 
 * **Common Elements**
@@ -26,6 +26,7 @@
 * [Modifying the HUD](guides/modify-hud.md)
 * [Hiding UI Elements](guides/hiding-elements.md)
 * [Building a Custom Screen](guides/custom-screen.md)
+* [Animating UI Textures](guides/animating-textures.md)
 
 * **Reference**
 * [Common Properties](reference/properties.md)
